@@ -1,0 +1,15 @@
+@use '../../styles/init' as *;
+
+.header {
+  @include flex($align-items: center);
+
+  background-color: var(--grey-950);
+  height: rem(56px);
+}
+
+.wrapper {
+  @include flex(space-between, center);
+
+  height: 100%;
+}
+

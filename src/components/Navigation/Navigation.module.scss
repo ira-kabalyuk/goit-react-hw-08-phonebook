@@ -1,0 +1,20 @@
+
+@use '../../styles/init' as *;
+
+.nav {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 16px;
+  justify-content: start;
+}
+
+.link {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.active {
+  color: var(--text-primary);
+}

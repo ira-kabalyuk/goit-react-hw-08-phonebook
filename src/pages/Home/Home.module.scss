@@ -1,0 +1,58 @@
+
+@use '../../styles/init' as *;
+
+.content {
+  @include make-spacer(mt, 3);
+  @include make-spacer(mt, 7, md);
+
+  display: grid;
+  grid-gap: rem(16px);
+  justify-content: center;
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: 1fr rem(400px);
+    justify-content: start;
+  }
+}
+
+.title {
+  @include font-size(48px, 56px);
+  @include make-spacer(mb, 5);
+  
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    @include font-size(64px, 72px);
+    text-align: left;
+  }
+}
+
+.subtitle {
+  @include font-size(24px, 32px);
+
+  color: var(--text-secondary);
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    @include font-size(48px, 56px);
+    text-align: left;
+  }
+}
+
+.wrapper {
+  @include make-spacer(mx, auto);
+  @include make-spacer(mx, 0, md);
+
+  width: rem(200px);
+
+  @include media-breakpoint-up(md) {
+    width: auto;
+  }
+}
+
+.image {
+  display: block;
+  
+  width: 100%;
+}

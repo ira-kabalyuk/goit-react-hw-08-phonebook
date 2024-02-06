@@ -1,0 +1,14 @@
+@use '../../abstract/helpers/all' as h;
+
+//
+// Project header
+//
+
+:root {
+  --header-height: #{h.rem(44px)};
+  --header-submenu: #{h.rem(40px)};
+
+  @include h.media-breakpoint-up(md) {
+    --header-height: #{h.rem(64px)};
+  }
+}

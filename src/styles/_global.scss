@@ -1,0 +1,55 @@
+@use 'abstract/helpers/helpers' as h;
+@use '../styles/init' as *;
+
+// ------------------------------------
+//   #HTML
+// ------------------------------------
+
+html {
+  height: 100%;
+}
+
+// ------------------------------------
+//   #BODY
+// ------------------------------------
+
+body {
+  @include h.smooth-font;
+  @include h.font-size(16px, 20px);
+
+  background-color: var(--black-bg);
+  color: var(--text-primary);
+  min-width: 320px;
+  max-width: 100%;
+  min-height: 100%;  
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-primary);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+[id='__next'] {
+  height: 100%;
+}
+
+.o-img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+//advertising styles
+
+.nn-sticky {
+  z-index: 199 !important; /* stylelint-disable-line */
+}
+
+[id='nn_player'] {
+  position: relative;
+  z-index: 199;
+}

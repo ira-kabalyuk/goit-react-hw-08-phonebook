@@ -1,0 +1,11 @@
+@use '../../styles/init' as *;
+
+.section {
+  @include make-spacer(px, 2);
+  @include make-spacer(px, 3, sm);
+  @include make-spacer(px, 0, md);
+  @include make-spacer(mx, auto);
+
+  width: 100%;
+  max-width: var(--container-width);
+}

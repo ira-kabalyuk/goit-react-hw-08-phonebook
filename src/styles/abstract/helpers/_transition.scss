@@ -1,0 +1,13 @@
+@use '../variables/transition' as t;
+
+// stylelint-disable at-rule-empty-line-before
+
+//
+// Set transition
+//
+
+@mixin transition($prop: all, $duration: t.$transition-duration, $easing: t.$transition-timing-function) {
+  transition-duration: $duration;
+  transition-property: $prop;
+  transition-timing-function: $easing;
+}

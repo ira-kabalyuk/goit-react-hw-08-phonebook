@@ -1,0 +1,12 @@
+
+@use '../../styles/init' as *;
+
+.content {
+  @include flex(space-between, $direction: column);
+}
+
+.main {
+  @include make-spacer(mt, 3);
+
+  flex: 1 1;
+}

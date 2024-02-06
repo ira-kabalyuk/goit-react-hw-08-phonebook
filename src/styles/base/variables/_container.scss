@@ -1,0 +1,13 @@
+@use '../../abstract/helpers/all' as h;
+
+//
+// Project container width
+//
+
+:root {
+  --container-width: 100%;
+
+  @include h.media-breakpoint-up(md) {
+    --container-width: #{h.rem(940px)};
+  }
+}
