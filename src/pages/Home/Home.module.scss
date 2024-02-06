@@ -6,12 +6,11 @@
   @include make-spacer(mt, 7, md);
 
   display: grid;
-  grid-gap: rem(16px);
-  justify-content: center;
+  grid-gap: rem(16px); 
+  align-items: center;
 
   @include media-breakpoint-up(md) {
-    grid-template-columns: 1fr rem(400px);
-    justify-content: start;
+    grid-template-columns: 1fr rem(400px);  
   }
 }
 

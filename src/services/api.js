@@ -8,9 +8,15 @@ export const $authInstance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });
 
+
 export const setToken = token => {
   $authInstance.defaults.headers.common.Authorization = `Bearer ${token}`; // Bearer - формат для бекенду
 }
+
+export const clearToken = () => {
+  $authInstance.defaults.headers.common.Authorization = ''; // Bearer - формат для бекенду
+}
+
 
 export const signUpRequest = async (formData) => {
   const { data } = await $authInstance.post('/users/signup', formData)
@@ -25,6 +31,12 @@ export const loginRequest = async (formData) => {
 export const refreshRequest = async () => {
   const { data } = await $authInstance.get('/users/current')
   return data;
+};
+
+export const logoutRequest = async () => {
+  await $authInstance.post('/users/logout');
+  clearToken();
+  return;
 };
 
 // contacts

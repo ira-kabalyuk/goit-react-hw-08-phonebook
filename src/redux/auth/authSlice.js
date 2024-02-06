@@ -1,6 +1,6 @@
 
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { loginRequest, refreshRequest, setToken, signUpRequest } from "services/api";
+import {loginRequest, logoutRequest, refreshRequest, setToken, signUpRequest } from "services/api";
 
 
 export const apiRegisterUser = createAsyncThunk('auth/apiRegisterUser', async (formData, thunkApi) => {
@@ -36,13 +36,21 @@ export const apiRefreshUser = createAsyncThunk('auth/apiRefreshUser', async (_, 
   if (!token) return thunkApi.rejectWithValue('You don`t have token')
   try {
     setToken(token)
-    const data = await refreshRequest();
-    console.log(data, 'data')
+    const data = await refreshRequest();    
     return data;
   } catch (error) {
     return thunkApi.rejectWithValue(error.message)
   }
 });
+
+export const apiLogoutUser = createAsyncThunk('auth/apiLogoutUser', async (_, thunkApi) => {
+  try {
+    await logoutRequest();
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message)
+  }
+});
+
 
 const initialState = {
   token: null,
@@ -73,15 +81,29 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.userData = action.payload;
     })
+    .addCase(apiLogoutUser.fulfilled, () => {
+      return initialState;
+    })
+
     .addMatcher(
-      isAnyOf(apiRegisterUser.pending, apiLoginUser.pending),
-      (state, action) => {
+      isAnyOf(
+        apiRegisterUser.pending,
+        apiLoginUser.pending,
+        apiRefreshUser.pending,
+        apiLogoutUser.pending,
+      ),
+      state => {
         state.isLoading = true;
         state.error = null;
       }
     )
     .addMatcher(
-      isAnyOf(apiRegisterUser.rejected, apiLoginUser.rejected),
+      isAnyOf(
+        apiRegisterUser.rejected,
+        apiLoginUser.rejected,
+        apiRefreshUser.rejected,
+        apiLogoutUser.rejected,
+      ),
       (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
