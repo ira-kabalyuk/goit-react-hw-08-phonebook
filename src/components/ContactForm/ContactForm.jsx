@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './ContactForm.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { apiPostContact } from '../../redux/contacts/contactsReducer';
+import { apiPostContact } from '../../redux/contacts/contactsSlice';
 import { selectContacts } from '../../redux/contacts/contactsSlice.selectors';
 
 

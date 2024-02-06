@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { apiDeleteContact, apiGetContacts } from '../../redux/contacts/contactsReducer';
+import { apiDeleteContact, apiGetContacts } from '../../redux/contacts/contactsSlice';
 import { STATUSES } from 'utils/constants';
 import { Loader } from 'components/Loader';
 import { Error } from 'components/Error';
@@ -40,10 +40,10 @@ const ContactList = () => {
 
       {(visibleContacts.length > 0 ) ? (
         <ul className={styles.list}>
-          {visibleContacts.map(({ id, name, phone }) => (
-            <li className={styles.item} key={id + phone}>
+          {visibleContacts.map(({ id, name, number }) => (
+            <li className={styles.item} key={id}>
               <span>{name}</span>
-              <span>{phone}</span>
+              <span>{number}</span>
               <button type='button' className={styles.button} onClick={() => onDeleteContact(id)}>
                 Delete
               </button>

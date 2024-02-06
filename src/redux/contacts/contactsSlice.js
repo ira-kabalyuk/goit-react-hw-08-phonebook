@@ -12,9 +12,9 @@ export const apiGetContacts = createAsyncThunk("contacts/fetchAll", async (_, th
   }
 });
 
-export const apiPostContact = createAsyncThunk("contacts/addContact", async ({ name, phone }, thunkApi) => {
+export const apiPostContact = createAsyncThunk("contacts/addContact", async ({ name, number }, thunkApi) => {
   try {
-    const contacts = await addContactRequest(name, phone);
+    const contacts = await addContactRequest(name, number);
     return contacts; // записується Action Payload
   } catch (error) {
     return thunkApi.rejectWithValue(error.message)
@@ -83,11 +83,7 @@ const contactsSlice = createSlice({
     })
     .addCase(apiDeleteContact.fulfilled, (state, action) => {
       state.contacts.status = STATUSES.success;
-      //state.contacts.items = state.contacts.items.filter(contact => contact.id !== action.payload);
-      const index = state.contacts.items.findIndex(
-          contact => contact.id === action.payload.id
-      );      
-        state.contacts.items.splice(index, 1);
+      state.contacts.items = state.contacts.items.filter(contact => contact.id !== action.payload.id);
     })
     .addCase(apiDeleteContact.rejected, (state, action) => {
       state.contacts.status = STATUSES.error;
