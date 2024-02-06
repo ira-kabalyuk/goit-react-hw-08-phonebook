@@ -1,13 +1,15 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import '../styles/base.scss';
+import { useDispatch } from 'react-redux';
+import { apiRefreshUser } from '../redux/auth/authSlice';
 
 import { Layout } from './Layout';
 import { Error } from './Error';
 import { Loader } from './Loader';
 import { Route, Routes } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
-import { useDispatch } from 'react-redux';
-import { apiRefreshUser } from '../redux/auth/authSlice';
+import { PrivateRoute } from './PrivateRoute';
+
+import '../styles/base.scss';
 
 
 const HomePage = lazy(() => import('pages/Home/Home'));
@@ -39,7 +41,12 @@ const App = () => {
             </RestrictedRoute>
             }>
           </Route>
-          <Route path="/contacts" element={<ContactsPage />}></Route>
+          <Route path="/contacts" element={
+            <PrivateRoute>
+              <ContactsPage />
+            </PrivateRoute>
+            }>
+          </Route>
           <Route path="*" element={<Error>404. Page not found 🤷‍♀️</Error>} />
         </Routes>
       </Suspense>
