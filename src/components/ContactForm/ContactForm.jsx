@@ -5,6 +5,7 @@ import { apiPostContact } from '../../redux/contacts/contactsSlice';
 import { selectContacts } from '../../redux/contacts/contactsSlice.selectors';
 import { Input } from 'components/Input';
 import { Button } from 'components/Button';
+import { Title } from 'components/Title';
 
 
 const ContactForm = () => {
@@ -55,9 +56,9 @@ const ContactForm = () => {
     reset();
   }  
 
-  return (      
+  return (
     <div>
-      <h2 className={styles.title}>Create contact</h2>
+      <Title text='Create contact'></Title>
       <form className={styles.form} onSubmit={handleSubmit}>
         <Input label='enter contact name'
           value={name}

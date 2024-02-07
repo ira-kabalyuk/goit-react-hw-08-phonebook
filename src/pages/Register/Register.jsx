@@ -1,9 +1,13 @@
 import React from "react";
 
-import styles from './Register.module.scss';
 import { Section } from "components/Section";
 import { useDispatch } from "react-redux";
 import { apiRegisterUser } from "../../redux/auth/authSlice";
+import { Title } from "components/Title";
+
+import styles from './Register.module.scss';
+import { Input } from "components/Input";
+import { Button } from "components/Button";
 
 
 const Register = () => {
@@ -26,18 +30,47 @@ const Register = () => {
   
   return (
     <Section>
-      <h1>Register page</h1>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="username">Name:
+      <Title text='Register'></Title>
+     
+      <form onSubmit={onSubmit} className={styles.form}>
+        <Input
+          label='Enter your name'
+          type="text"
+          id="username"
+          name='userName'
+          placeholder='Your name'
+          minLength={2}
+          required
+          htmlFor="username" />
+        {/* <label htmlFor="username">Name:
           <input type="text" id="username" name='userName' placeholder='Your name' minLength={2} required />
-        </label>
-        <label htmlFor="useremail">Email:
+        </label> */}
+        <Input
+          label='Enter your e-mail'
+          type="email"
+          id="useremail"
+          name='userEmail'
+          placeholder='Your email'
+          required
+          htmlFor="useremail"
+        />
+        {/* <label htmlFor="useremail">Email:
           <input type="email" id="useremail" name='userEmail' placeholder='Your email' required />
-        </label>
-        <label htmlFor="userpassword">Password:
+        </label> */}
+        <Input
+          label='Enter your password'
+          type="password"
+          id="userpassword"
+          name='userPassword'
+          placeholder='Your password'
+          minLength={7}
+          required
+          htmlFor="userpassword"
+        />
+        {/* <label htmlFor="userpassword">Password:
           <input type="password" id="userpassword" name='userPassword' placeholder='Your password' minLength={7} required />
-        </label>
-        <button type='submit'>Sign Up</button>
+        </label> */}
+        <Button type='submit' text='Sign Up' />
       </form>
     </Section>
   );

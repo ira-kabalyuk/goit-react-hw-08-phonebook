@@ -4,9 +4,9 @@ import { Section } from 'components/Section';
 import { ContactForm } from 'components/ContactForm';
 import { Filter } from 'components/Filter';
 import { ContactList } from 'components/ContactList';
+import { Title } from 'components/Title';
 
 import styles from './Contacts.module.scss';
-
 
 const Contacts = () => {
   
@@ -15,11 +15,11 @@ const Contacts = () => {
       <div className={styles.wrapper}>
         <ContactForm/>
         <div>
-          <h2 className={styles.title}>Your contacts</h2>
+          <Title text='Your contacts'></Title>
           <Filter />
           <ContactList/>
-        </div>        
-      </div>      
+        </div>
+      </div>
     </Section>
   );
 };

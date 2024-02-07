@@ -10,14 +10,3 @@
     grid-gap: rem(40px);
   }
 }
-
-.title {
-  @include font-size(18px, 20px);
-    @include make-spacer(mb, 3);
-
-  text-align: center;
-
-  @include media-breakpoint-up(sm) {
-    @include font-size(24px, 30px);
-  }
-}

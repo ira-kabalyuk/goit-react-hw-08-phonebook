@@ -37,4 +37,12 @@
   &:focus {
     border-color: var(--text-secondary);
   }
+
+  &:-internal-autofill-selected {
+    background-color: var(--grey-900);
+  }
+
+  &:-webkit-autofill {
+    background-color: var(--grey-900);
+  }
 }
