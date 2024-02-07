@@ -12,9 +12,14 @@ const Contacts = () => {
   
   return (
     <Section>
-      <ContactForm/>
-      <Filter />
-      <ContactList/>
+      <div className={styles.wrapper}>
+        <ContactForm/>
+        <div>
+          <h2 className={styles.title}>Your contacts</h2>
+          <Filter />
+          <ContactList/>
+        </div>        
+      </div>      
     </Section>
   );
 };

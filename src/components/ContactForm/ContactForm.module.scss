@@ -1,16 +1,20 @@
-.form {
-  width: 200px;
+@use '../../styles/init' as *;
+
+.form {  
+  @include make-spacer(mb, 4);
+  @include make-spacer(mb, 7, sm);
+  
   display: grid;
-  grid-gap: 20px;
-  margin-bottom: 40px;
+  grid-gap: 20px;  
 }
 
-.label {
-  display: grid;
-  grid-gap: 8px;
-}
+.title {
+  @include font-size(18px, 20px);  
+  @include make-spacer(mb, 3);
 
-button {
-  border: 0;
-  padding: 5px 10px;
+  text-align: center;
+
+  @include media-breakpoint-up(sm) {
+    @include font-size(24px, 30px);
+  }
 }

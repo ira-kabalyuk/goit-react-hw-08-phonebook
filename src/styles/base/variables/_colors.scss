@@ -24,16 +24,13 @@
   --text-primary-article: #b6b6c6;
   --secondary-white: #b1bbcd;
   --text-secondary: #9999a9;
-  --red: #920300;
-  --red-400: #900;
-  --red-darken: #420300;
-  --blue-darken: #010029;
-  --red-contrasted: #ff3127;
-  --functional-red: #6c0e23;
-  --primary: #dd0a00;
   --gradient-1: linear-gradient(182.29deg, rgba(66, 3, 0, 0.5) -20.87%, var(--black-bg) 94.82%);
-  --gradient-2: linear-gradient(90deg, var(--red-400) -0.01%, var(--red-contrasted) 99.74%);
-  --gradient-grey: linear-gradient(90deg, var(--grey-700) -0.01%, #58586b 15.9%, #6d7082 41.61%, #9096a9 73.7%, var(--secondary-white) 100.01%);
-  --gradient-black: linear-gradient(90deg, #000020 -0.01%, var(--grey-700) 99.74%);
-  --white-alpha-003: rgba(255, 255, 255, 0.03);
+
+  --blue-darken: #010029;
+    --primary: #dd0a00;
+
+  --red-contrasted: #cc365d;  
+  --gradient-2: linear-gradient(90deg, #cc365d, #1c1e60);
+  --gradient-hover-2: linear-gradient(-90deg, #cc365d, #1c1e60);
+ 
 }

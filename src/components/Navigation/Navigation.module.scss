@@ -9,12 +9,20 @@
 }
 
 .link {
+  @include transition(color);
   font-size: 16px;
   font-weight: bold;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: none;
+
+  &:hover {
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
 }
 
 .active {
-  color: var(--text-primary);
+  color: var(--red-contrasted);
+
+  pointer-events: none;  
 }

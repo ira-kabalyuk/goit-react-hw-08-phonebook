@@ -1,0 +1,19 @@
+
+@use '../../styles/init' as *;
+
+.block {  
+  @include reset-button;
+  @include flex(center, center, $display: inline-flex);
+  @include make-spacer(py, 1);
+  @include make-spacer(px, 2);
+  @include transition(#{background-color, border-color, color});
+  @include font-size(14px, 16px);
+
+  background: var(--gradient-2);
+  color: var(--text-primary);  
+  border-radius: 2px;
+
+  &:hover {
+    background: var(--gradient-hover-2);
+  }
+}

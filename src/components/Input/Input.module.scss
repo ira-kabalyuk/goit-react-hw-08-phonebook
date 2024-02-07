@@ -1,0 +1,40 @@
+
+@use '../../styles/init' as *;
+
+.block {
+  width: 100%;
+}
+
+.label {
+  @include font-size(14px, 16px);
+  
+  color: var(--text-secondary);
+  width: 100%;
+}
+
+.text {
+  @include make-spacer(mb, 1);
+  
+  display: inline-block;
+}
+
+.input {
+  @include size(100%, rem(40px));
+  @include flex(flex-start, center);
+  @include make-spacer(pl, 2);
+  @include make-spacer(pr, 5);
+
+  border: 1px solid var(--grey-800);
+  background-color: var(--grey-900);
+  color: var(--text-primary);
+  width: 100%;
+  border-radius: 2px;
+
+  &::placeholder {
+    color: var(--text-secondary);
+  }
+
+  &:focus {
+    border-color: var(--text-secondary);
+  }
+}

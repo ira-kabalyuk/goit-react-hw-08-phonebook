@@ -1,28 +1,48 @@
+@use '../../styles/init' as *;
+
 .list {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: rem(16px);
 }
 
 .item {
+  @include font-size(16px, 20px);
+  @include make-spacer(px, 2);
+  @include make-spacer(py, 1);
+
   display: grid;
-  grid-auto-flow: column;
-  justify-content: start;
-  grid-gap: 10px;
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.button {
-  border: 0;
-  font-size: 12px;
-  padding: 5px 10px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #ccc;
-  }
+  grid-template-columns: 1fr auto;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: rem(8px);
+  border: 1px solid var(--grey-800);
 }
 
 .message {
   font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.info {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: rem(16px);
+  justify-content: start;
+}
+
+.label {
+  @include make-spacer(mb, 1);
+  @include font-size(12px, 14px);
+
+  display: inline-block;
+  color: var(--text-secondary);
+}
+
+.name {
+  font-weight: var(--font-weight-bold);
+  color: var(--red-contrasted);
+}
+
+.number {
+  //color: var(--text-secondary);
 }

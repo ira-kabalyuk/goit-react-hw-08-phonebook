@@ -10,6 +10,7 @@ import {
   selectContactsStatus,
   selectFilteredContacts
 } from '../../redux/contacts/contactsSlice.selectors';
+import { Button } from 'components/Button';
 
 const ContactList = () => {
 
@@ -42,11 +43,17 @@ const ContactList = () => {
         <ul className={styles.list}>
           {visibleContacts.map(({ id, name, number }) => (
             <li className={styles.item} key={id}>
-              <span>{name}</span>
-              <span>{number}</span>
-              <button type='button' className={styles.button} onClick={() => onDeleteContact(id)}>
-                Delete
-              </button>
+              <div className={styles.info}>
+                <div>
+                  <span className={styles.label}>Name</span>
+                  <p className={styles.name}>{name}</p>
+                </div>
+                <div>
+                  <span className={styles.label}>Number</span>
+                  <p className={styles.number}>{number}</p>
+                </div>
+              </div>
+             <Button onClick={() => onDeleteContact(id)} text='Delete' />
             </li>
           ))}
         </ul>

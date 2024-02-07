@@ -6,7 +6,8 @@
 }
 
 .main {
-  @include make-spacer(mt, 3);
+  @include make-spacer(my, 3);
+  @include make-spacer(my, 4, sm);
 
   flex: 1 1;
 }

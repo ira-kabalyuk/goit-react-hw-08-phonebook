@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './Filter.module.scss';
+
 import { setFilter } from '../../redux/contacts/contactsSlice';
 import { selectContactsFilter } from '../../redux/contacts/contactsSlice.selectors';
+import { Input } from 'components/Input';
+
+import styles from './Filter.module.scss';
 
   const Filter = () => {
   const dispatch = useDispatch();
@@ -14,14 +17,10 @@ import { selectContactsFilter } from '../../redux/contacts/contactsSlice.selecto
     dispatch(action);
   }
 
-    return (
-    <>
-      <h2>Contacts</h2>
-      <label className={styles.label}>
-        Filter
-        <input type="text" value={filter} onChange={changeFilter} />
-      </label>
-    </>
+  return (
+    <div className={styles.block}>
+      <Input label='Search contact' type="text" value={filter} onChange={changeFilter} />  
+    </div>
   );
 };
 

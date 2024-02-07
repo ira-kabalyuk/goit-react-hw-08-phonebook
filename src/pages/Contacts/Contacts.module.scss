@@ -1,0 +1,23 @@
+
+@use '../../styles/init' as *;
+
+.wrapper {
+  display: grid;
+  grid-gap: rem(24px);
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: rem(200px) 1fr;
+    grid-gap: rem(40px);
+  }
+}
+
+.title {
+  @include font-size(18px, 20px);
+    @include make-spacer(mb, 3);
+
+  text-align: center;
+
+  @include media-breakpoint-up(sm) {
+    @include font-size(24px, 30px);
+  }
+}

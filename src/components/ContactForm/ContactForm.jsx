@@ -3,6 +3,8 @@ import styles from './ContactForm.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { apiPostContact } from '../../redux/contacts/contactsSlice';
 import { selectContacts } from '../../redux/contacts/contactsSlice.selectors';
+import { Input } from 'components/Input';
+import { Button } from 'components/Button';
 
 
 const ContactForm = () => {
@@ -53,35 +55,30 @@ const ContactForm = () => {
     reset();
   }  
 
-  return (
-    <>
-      <h1>Phonebook</h1>
+  return (      
+    <div>
+      <h2 className={styles.title}>Create contact</h2>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <label className={styles.label}>
-          Name
-          <input
-            value={name}
-            onChange={handleChange}
-            type="text"
-            name="name"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-        </label>
-        <label className={styles.label}>
-          Number
-          <input
-            value={number}
-            onChange={handleChange}
-            type="tel"
-            name="number"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-        </label>
-        <button type="submit">add Contact</button>
+        <Input label='enter contact name'
+          value={name}
+          onChange={handleChange}
+          type="text"
+          name="name"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+        />
+        <Input label='enter contact number'
+          value={number}
+          onChange={handleChange}
+          type="tel"
+          name="number"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+        />        
+        <Button type="submit" text='Add Contact'></Button>
       </form>
-    </>
+    </div>
+    
   );
 };
 

@@ -1,6 +1,6 @@
-.label {
-  width: 200px;
-  display: grid;
-  grid-gap: 8px;
-  margin: 8px 0 20px;
+@use '../../styles/init' as *;
+
+.block {
+  @include make-spacer(mb, 3);
+  @include make-spacer(mb, 5, sm);
 }
