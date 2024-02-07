@@ -6,6 +6,7 @@ import { selectContacts } from '../../redux/contacts/contactsSlice.selectors';
 import { Input } from 'components/Input';
 import { Button } from 'components/Button';
 import { Title } from 'components/Title';
+import { toast } from 'react-toastify';
 
 
 const ContactForm = () => {
@@ -30,10 +31,10 @@ const ContactForm = () => {
       return alert(`${name} is already in phonebook`);
     }    
     
-    dispatch(apiPostContact(contact));
-    
+    dispatch(apiPostContact(contact)).unwrap()
+      .then((data) => { toast.success(`Contact "${data.name}" was successfully added`); })
+      .catch(err => toast.error(err));
   };
-
 
   const handleChange = event => {
     const { name, value } = event.currentTarget;

@@ -1,16 +1,18 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { apiDeleteContact, apiGetContacts } from '../../redux/contacts/contactsSlice';
-import { STATUSES } from 'utils/constants';
-import { Loader } from 'components/Loader';
-import { Error } from 'components/Error';
-
-import styles from './ContactList.module.scss';
 import {  
   selectContactsStatus,
   selectFilteredContacts
 } from '../../redux/contacts/contactsSlice.selectors';
+import { STATUSES } from 'utils/constants';
+
+import { Loader } from 'components/Loader';
+import { Error } from 'components/Error';
+
+import styles from './ContactList.module.scss';
 import { Button } from 'components/Button';
+import { toast } from 'react-toastify';
 
 const ContactList = () => {
 
@@ -26,7 +28,9 @@ const ContactList = () => {
   
  
   const onDeleteContact = (contactId) => {
-    dispatch(apiDeleteContact(contactId));
+    dispatch(apiDeleteContact(contactId)).unwrap()
+      .then((data) => { toast.success(`Contact "${data.name}" was successfully deleted`); })
+      .catch(err => toast.error(err));;
   }
 
   const visibleContacts = filteredContacts; // мемоізація

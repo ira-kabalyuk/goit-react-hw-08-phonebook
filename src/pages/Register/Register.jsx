@@ -30,8 +30,7 @@ const Register = () => {
   
   return (
     <Section>
-      <Title text='Register'></Title>
-     
+      <Title text='Register'></Title>     
       <form onSubmit={onSubmit} className={styles.form}>
         <Input
           label='Enter your name'
@@ -41,10 +40,7 @@ const Register = () => {
           placeholder='Your name'
           minLength={2}
           required
-          htmlFor="username" />
-        {/* <label htmlFor="username">Name:
-          <input type="text" id="username" name='userName' placeholder='Your name' minLength={2} required />
-        </label> */}
+          htmlFor="username" />   
         <Input
           label='Enter your e-mail'
           type="email"
@@ -53,10 +49,7 @@ const Register = () => {
           placeholder='Your email'
           required
           htmlFor="useremail"
-        />
-        {/* <label htmlFor="useremail">Email:
-          <input type="email" id="useremail" name='userEmail' placeholder='Your email' required />
-        </label> */}
+        />      
         <Input
           label='Enter your password'
           type="password"
@@ -66,10 +59,7 @@ const Register = () => {
           minLength={7}
           required
           htmlFor="userpassword"
-        />
-        {/* <label htmlFor="userpassword">Password:
-          <input type="password" id="userpassword" name='userPassword' placeholder='Your password' minLength={7} required />
-        </label> */}
+        />     
         <Button type='submit' text='Sign Up' />
       </form>
     </Section>
