@@ -1,5 +1,6 @@
 
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 import {loginRequest, logoutRequest, refreshRequest, setToken, signUpRequest } from "services/api";
 
 
@@ -23,9 +24,11 @@ export const apiLoginUser = createAsyncThunk('auth/apiLoginUser', async (formDat
   try {
     const data = await loginRequest(formData);   
     setToken(data.token)
+    thunkApi.dispatch(authSlice.actions.setErrorCode(null));
     return data;
   } catch (error) {
-    return thunkApi.rejectWithValue(error.message)
+    thunkApi.dispatch(authSlice.actions.setErrorCode(error.response.status));
+    return thunkApi.rejectWithValue(error.message);
   }
 });
 
@@ -36,7 +39,7 @@ export const apiRefreshUser = createAsyncThunk('auth/apiRefreshUser', async (_, 
   if (!token) return thunkApi.rejectWithValue('You don`t have token')
   try {
     setToken(token)
-    const data = await refreshRequest();    
+    const data = await refreshRequest();
     return data;
   } catch (error) {
     return thunkApi.rejectWithValue(error.message)
@@ -57,12 +60,18 @@ const initialState = {
   isLoggedIn: false,
   userData: null,
   error: null,
+  errorCode: null,
   isLoading: false,
 }
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    setErrorCode(state, action) {
+      state.errorCode = action.payload;      
+    },   
+  },
   extraReducers: (builder) => builder
     .addCase(apiRegisterUser.fulfilled, (state, action) => {
       state.isLoading = false;
@@ -106,7 +115,7 @@ const authSlice = createSlice({
       ),
       (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload;        
       }
     ),
 });

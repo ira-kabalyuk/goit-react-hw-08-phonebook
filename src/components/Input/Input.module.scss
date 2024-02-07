@@ -45,4 +45,16 @@
   &:-webkit-autofill {
     background-color: var(--grey-900);
   }
+
+  &.error {
+    border-color: var(--red-contrasted);
+  }
+}
+
+.errorMessage {
+  @include font-size(12px, 16px);
+  @include make-spacer(mt, half);
+
+  color: var(--red-contrasted);
+  display: block;
 }
