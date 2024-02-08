@@ -30,7 +30,6 @@ const Login = () => {
 
   const error = useSelector(selectAuthErrorCode);  
 
-  console.log(error, 'error')
   
   return (
     <Section>

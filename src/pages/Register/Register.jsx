@@ -1,13 +1,14 @@
 import React from "react";
 
-import { Section } from "components/Section";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { apiRegisterUser } from "../../redux/auth/authSlice";
+import { selectAuthErrorCode } from "../../redux/auth/authSlice.selectors";
 import { Title } from "components/Title";
 
 import styles from './Register.module.scss';
 import { Input } from "components/Input";
 import { Button } from "components/Button";
+import { Section } from "components/Section";
 
 
 const Register = () => {
@@ -27,6 +28,8 @@ const Register = () => {
 
     dispatch(apiRegisterUser(FormData))
   }
+
+  const error = useSelector(selectAuthErrorCode);
   
   return (
     <Section>
@@ -40,7 +43,8 @@ const Register = () => {
           placeholder='Your name'
           minLength={2}
           required
-          htmlFor="username" />   
+          htmlFor="username"
+        />          
         <Input
           label='Enter your e-mail'
           type="email"
@@ -49,6 +53,7 @@ const Register = () => {
           placeholder='Your email'
           required
           htmlFor="useremail"
+          hasError={error}
         />      
         <Input
           label='Enter your password'
@@ -59,6 +64,7 @@ const Register = () => {
           minLength={7}
           required
           htmlFor="userpassword"
+          hasError={error}
         />     
         <Button type='submit' text='Sign Up' />
       </form>

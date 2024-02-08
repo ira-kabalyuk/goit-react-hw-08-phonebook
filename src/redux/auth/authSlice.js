@@ -1,6 +1,6 @@
 
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
+
 import {loginRequest, logoutRequest, refreshRequest, setToken, signUpRequest } from "services/api";
 
 
@@ -14,8 +14,10 @@ export const apiRegisterUser = createAsyncThunk('auth/apiRegisterUser', async (f
     // dispatch(apiRefreshUser())
     // }, [dispatch]);
     setToken(data.token)
+    thunkApi.dispatch(authSlice.actions.setErrorCode(null));
     return data;
   } catch (error) {
+    thunkApi.dispatch(authSlice.actions.setErrorCode(error.response.status));
     return thunkApi.rejectWithValue(error.message)
   }
 });
@@ -69,7 +71,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setErrorCode(state, action) {
-      state.errorCode = action.payload;      
+      state.errorCode = action.payload;
     },   
   },
   extraReducers: (builder) => builder
