@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { requestTrending } from 'services/api';
-
-import { STATUSES } from 'utils/constants';
+import React from "react";
 import image  from 'images/book.png';
 
 import { Section } from 'components/Section';
-
 
 import styles from './Home.module.scss';
 
@@ -21,7 +17,7 @@ const Home = () => {
         </div>
         <div className={styles.wrapper}>
           <img className={styles.image} src={image} alt="img" />
-        </div>        
+        </div>
       </div>
     </Section>
   );
